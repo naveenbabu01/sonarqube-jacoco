@@ -31,3 +31,18 @@ jobs:
       with: 
         name: jarfile
         path: ${{ github.workspace }}/target/spring-boot-testing-0.0.1-SNAPSHOT.jar
+deploy: 
+     
+     runs-on: ubuntu-latest
+     permissions:
+      contents: read
+      packages: write
+      
+     Steps:
+     - uses: actions/checkout@v3
+     - name: Download a Build Artifact
+       uses: actions/download-artifact@v2.1.1
+       with: 
+         Artifact name: jarfile
+         Path: ${{ github.workspace }}/target/spring-boot-testing-0.0.1-SNAPSHOT.jar
+     
